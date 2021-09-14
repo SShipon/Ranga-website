@@ -10,6 +10,12 @@ loadProducts();
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
+    const rating = product.rating.rate;
+    // star rating 
+    const star1 = (rating > 4) ? 'fill-rate' : 'noRating';
+    const star2 = (rating > 3 && rating <= 4) ? 'fill-rate' : 'noRating';
+    const star3 = (rating > 2 && rating <= 3) ? 'fill-rate' : 'noRating';
+    const star4 = (rating > 1 && rating <= 2) ? 'fill-rate' : 'noRating';
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("product");
@@ -20,7 +26,14 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
-      <h2>Rating: ${product.rating.rate}</h2>
+      <h5><p class="product-category">Category: <span class="category-name">${product.category}</span></p>
+      <p class="product-ratings">Ratings:<span>
+      <i class="fas fa-star rating ${star1} ${star2} ${star3} ${star4}"></i>
+      <i class="fas fa-star rating ${star1} ${star2} ${star3}"></i>
+      <i class="fas fa-star rating ${star1} ${star2}"></i>
+      <i class="fas fa-star rating ${star1}"></i>
+      <i class="fas fa-star rating"></i>
+      </span> (${product.rating.rate})</p></h5>
       <h4>count: ${product.rating.count}</h4>
       
       
@@ -41,7 +54,7 @@ const addToCart = (id, price) => {
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
-  const converted = parseInt(element);
+  const converted = parseFloat(element);
   return converted;
 };
 
@@ -50,12 +63,12 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText = parseFloat(total).toFixed(2);
+  document.getElementById(id).innerText = total.toFixed(2);
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = parseFloat(value).toFixed(2);
+  document.getElementById(id).innerText = value.toFixed(2);
 };
 
 // update delivery charge and total Tax
@@ -76,8 +89,8 @@ const updateTaxAndCharge = () => {
 };
 
 //grandTotal update function
- const updateTotal = () =>{
-  const grandTotal = parseFloat(document.getElementById("price").innerText)+ parseFloat( document.getElementById("delivery-charge").innerText) + parseFloat( document.getElementById("total-tax").innerText); 
-  document.getElementById("total").innerText = parseFloat (grandTotal).toFixed(2);
+const updateTotal = () =>{
+  const grandTotal = getInputValue('price')+ getInputValue('delivery-charge')+ getInputValue('total-tax')
+  document.getElementById('total').innerText=grandTotal.toFixed(2);
 } 
-
+updateTotal();

@@ -5,8 +5,10 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>assignment-7</title>
+  <title>Fashion Online Shopping</title>
   <link rel="stylesheet" href="./css/style.css" />
+  <!-- font-awesome link -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
@@ -18,11 +20,13 @@
 </head>
 
 <body>
-  <header></header>
+  <header>
+    <h2 class="header-site">"E-commerce shopping website"</h2>
+  </header>
   <main class="main">
     <div class="search-field">
       <div class="search-box">
-        <input id="input-field" class="search-field" type="text" />
+        <input id="input-field" class=" mt-4 search-field rounded-0 w-100" type="text" placeholder="Search your product name" />
         <button type="button" class="btn btn-primary search-button" data-toggle="button" aria-pressed="false"
           autocomplete="off" id="search-btn" onclick="loadProducts()">
           Search
@@ -34,6 +38,7 @@
         <div id="all-products" class="">
         </div>
       </div>
+     <!--  Total price area -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart" id="my-cart">
           <table class="table">
@@ -90,5 +95,5 @@
   <!-- add javascript  file  -->
   <script src="./js/app.js"></script>
 </body>
-
 </html>
+<!----->
